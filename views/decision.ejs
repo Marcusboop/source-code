@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Final Decision</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h2>Step 6: Approval or Rejection</h2>
+
+  <% if (status === 'approved') { %>
+    <p style="color: green;">✅ Your identity has been successfully verified.</p>
+    <a href="/register">Back to Home</a>
+  <% } else { %>
+    <p style="color: red;">❌ Verification Failed</p>
+    <p>Reason: <strong><%= reason %></strong></p>
+    <% if (reason === 'document blurry') { %>
+      <a href="/upload">Retry Document Submission</a>
+    <% } else if (reason === 'face mismatch') { %>
+      <a href="/face">Retry Facial Recognition</a>
+    <% } else { %>
+      <a href="/otp">Retry OTP Authentication</a>
+    <% } %>
+  <% } %>
+</body>
+</html>
+

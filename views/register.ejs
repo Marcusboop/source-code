@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>eKYC Registration</title>
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    body { font-size: 18px; }
+    .large-input { padding: 10px; font-size: 18px; width: 300px; display: block; margin-bottom: 10px; }
+    .btn { padding: 10px 20px; font-size: 16px; margin-right: 10px; }
+  </style>
+</head>
+<body>
+  <h2>Step 1: User Registration</h2>
+  <form action="/register" method="POST" id="regForm">
+    <input class="large-input" type="text" name="fullname" id="fullname" placeholder="Full Name" required>
+    <input class="large-input" type="text" name="nric" id="nric" placeholder="NRIC" required>
+    <input class="large-input" type="date" name="dob" id="dob" required>
+    <input class="large-input" type="email" name="email" id="email" placeholder="Email" required>
+    <input class="large-input" type="text" name="phone" id="phone" placeholder="Phone Number" required>
+
+    <button type="button" class="btn" onclick="fillMyInfo()">Use MyInfo (Auto-fill)</button>
+    <button type="submit" class="btn">Register</button>
+  </form>
+
+  <!-- Accessibility Features -->
+  <div>
+    <button onclick="increaseFont()" class="btn">🔍 Zoom In</button>
+    <button onclick="speakInstructions()" class="btn">🗣 Read Aloud</button>
+  </div>
+
+  <script>
+    function fillMyInfo() {
+      fetch('/myinfo')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('fullname').value = data.fullname;
+          document.getElementById('nric').value = data.nric;
+          document.getElementById('dob').value = data.dob;
+          document.getElementById('email').value = data.email;
+          document.getElementById('phone').value = data.phone;
+        });
+    }
+
+    function increaseFont() {
+      document.body.style.fontSize = "22px";
+    }
+
+    function speakInstructions() {
+      const msg = new SpeechSynthesisUtterance("Please enter your full name, NRIC, date of birth, email and phone number. You can also click the MyInfo button to auto-fill your data.");
+      window.speechSynthesis.speak(msg);
+    }
+  </script>
+</body>
+</html>
+
+

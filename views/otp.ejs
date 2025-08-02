@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OTP Authentication</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h2>Step 5: OTP Authentication</h2>
+  <p>We’ve sent a 6-digit OTP to your email/mobile.</p>
+  <form method="POST" action="/otp">
+      <input type="text" name="otp" maxlength="6" placeholder="Enter OTP" required>
+      <p><small>Demo OTP: <strong>123456</strong></small></p>
+      <button type="submit">Submit</button>
+  </form>
+</body>
+</html>

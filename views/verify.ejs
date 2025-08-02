@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Document Verification</title>
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    .loading-bar {
+      width: 60%;
+      height: 10px;
+      background: #4caf50;
+      margin: 1em auto;
+      animation: load 3s infinite;
+    }
+
+    @keyframes load {
+      0% { width: 0; }
+      100% { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <h2>Step 3: Document Verification</h2>
+  <div class="loading-bar"></div>
+  <p>OCR & AI verification in progress... Please wait 30–40 seconds</p>
+  <script>
+    setTimeout(() => {
+      window.location.href = "/face";
+    }, 4000); // simulate 4-second delay
+  </script>
+</body>
+</html>
+
